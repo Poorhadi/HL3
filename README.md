@@ -15,10 +15,13 @@ The model formally verifies the interaction between the Radio Block Centre (RBC)
 
 The system is developed using a stepwise refinement strategy to manage complexity and guarantee correctness-by-construction:
 
-1. **Abstract Specification (M0):** Defines the topological network, physical trains, and the absolute safety property: *No two trains can occupy the same physical space at the same time.*
-2. **First Refinement (M1):** Introduces Virtual Sub-Sections (VSS), Radio Block Centre (RBC) position tracking, and basic Movement Authority (MA) allocation.
-3. **Second Refinement (M2):** Introduces hybrid train fleets. Differentiates between fully equipped HL3 trains (with TIMS reporting via radio) and unequipped legacy trains (monitored via physical axle counters).
-4. **Third Refinement (M3):** Integrates cyber-vulnerabilities, allowing malicious event injections (e.g., spoofed integrity reports, delayed VSS state transitions, and ghost train clearings).
+1. **Abstract Specification (M0):** ControlLoop
+2. **First Refinement (M1):** ENV
+3. **Second Refinement (M2):** Interlocking
+4. **Third Refinement (M3):**  TrainController
+5. **Forth Refinement (M3):**  Train
+6. **Fifth Refinement (M3):**  TrainPositioEstimator
+7. **Sixth Refinement (M3):**  VSScontrollers
 
 ---
 
@@ -55,17 +58,8 @@ To explore, prove, and animate this model, you need the **Rodin Platform** and t
 The `/traces` folder contains specific execution paths where the system transitions from a safe operational state to a collision state due to modeled cyber-exploits.
 
 ### Cyberattack Scenarios Modeled:
-* `attack_spoofed_integrity.atc`: An attacker spoofs a "Train Integrated" radio message for a split train, causing the RBC to prematurely clear a VSS block.
-* `attack_dos_axle_counter.atc`: A Denial-of-Service attack blocks physical track vacancy updates, causing a hazard for unequipped trains.
-
-### How to Import and Replay Traces:
-1. In Rodin's *Event-B Explorer*, expand the project and double-click the **M3** machine to open it.
-2. Right-click inside the open machine editor and select **Start ProB Animation / Model Checking**.
-3. In the ProB Menu (top menu bar), navigate to **File** > **Open Trace...** (or **Load History...** depending on your ProB version).
-4. Browse to the `/traces` directory and select one of the attack trace files.
-5. Use the **History View** panel to click through the trace step-by-step. 
-6. Observe the **State View** to see the exact moment the safety invariant is violated (highlighted in red).
-
+* `InjectionAttack.trace`: An attacker injects a "Position Report" radio message
+* `Tameringattack.atc`: An attacker tampers with a "Position Report" radio message
 ---
 
 ## 🤝 Contributing & License
