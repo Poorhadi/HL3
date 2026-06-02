@@ -22,9 +22,8 @@ The system is developed using a stepwise refinement strategy to manage complexit
 5. **Forth Refinement (M3):**  Train
 6. **Fifth Refinement (M3):**  TrainPositioEstimator
 7. **Sixth Refinement (M3):**  VSScontrollers
-
 ---
-
+Note: the current model only supports tampering and deletion attack scenarios. 
 ## 🛠️ Prerequisites & Setup
 
 To explore, prove, and animate this model, you need the **Rodin Platform** and the **ProB** plugin.
