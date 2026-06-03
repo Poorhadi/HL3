@@ -54,7 +54,7 @@ To explore, prove, and animate this model, you need the **Rodin Platform** and t
 
 ## 🕹️ Animation & Cyberattack Simulation (ProB Traces)
 
-The `/traces` folder contains specific execution paths where the system transitions from a safe operational state to a collision state due to modeled cyber-exploits.
+The `/traces` folder contains specific execution paths where the system transitions from a safe operational state to a collision state due to tampering and injection attacks. However, the uploaded model only corresponds to the trace modeling the impact of a tampering attack.
 
 ### Cyberattack Scenarios Modeled:
 * `InjectionAttack.trace`: An attacker injects a "Position Report" radio message
